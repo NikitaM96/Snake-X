@@ -34,8 +34,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\Map.txt">
+    <Image Include="RESOURCES\tiles.png">
       <Filter>Resource Files</Filter>
-    </Text>
+    </Image>
   </ItemGroup>
 </Project>

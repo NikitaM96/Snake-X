@@ -4,99 +4,89 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <cctype>
 #include "Map.h"
 
 
 #define BLOCKSIZE 5
 
-std::vector < std::vector <int> > mapVector;
+//std::vector < std::vector <int> > mapVector;
 
+//std::ifstream openfile("Map.txt");
 
-void Map::LoadMap(const char *filename)
+void Map::LoadMap()
 {
-	std::ifstream openfile(filename);
-	std::vector <int> tempvector;
 
-	std::string line;
+	std::ifstream openfile("Map.txt");
+	mapTexture.loadFromFile("./RESOURCES/tiles.png");
+	mapSprite.setTexture(mapTexture);
 
+	
+
+	if (!openfile.is_open())
+	{
+		std::cout << "Error , did not open file. " ;
+	}
+
+
+	//opeing the file, and if there checks if the text in side are numbers or not to display colour wanted on screen
 	if (openfile.is_open())
 	{
+		std::cout << "File opened. ";
+		openfile >> mapTileLocation;
+		mapTexture.loadFromFile(mapTileLocation);
+		mapSprite.setTexture(mapTexture);
+		
+
 		while (!openfile.eof())
 		{
-			std::getline(openfile, line);
+			openfile >> str;
+			char x = str[0];
+			char y = str[2];
+
+
+			//checking if the numbers are relivent and if not set the location to the images to -1 so it doesnt draw anything
+			if (!isdigit(x) || !isdigit(y))
 			{
-				for (int i = 0; i < line.length(); i++)
-				{
-					if (line[i] != ' ')
-					{
-						char value[1] = { line[i] };
-						tempvector.push_back(atoi(value));
-
-					}
-				}
-
-				mapVector.push_back(tempvector);
-				tempvector.clear();
+				map[loadImage.x][loadImage.y] = sf::Vector2i(-1, -1);
 			}
+
+			else
+			{
+				map[loadImage.x][loadImage.y] = sf::Vector2i(x - '0', y - '0');
+			}
+
+
+			//if new line in file is reached , resets loadimage.x to 0 and implements loadimage.y by one
+			if (openfile.peek() == '\n')
+			{
+				loadImage.x = 0;
+				loadImage.y++;
+			}
+			else
+			{
+				loadImage.x++;
+			}
+
 		}
+		loadImage.x++;
 	}
-
-
 }
 
-void Map::Drawmap(sf::RenderWindow &window)
+void Map::Draw(RenderWindow *window)
 {
-
-	//sf::Shape rect = sf::Shape::Rectangle(0, 0, BLOCKSIZE, BLOCKSIZE, sf::Color::(100,100,100,100));
-
-	sf::RectangleShape rect(sf::Vector2f( 32, 32));
-
-	rect.setSize(sf::Vector2f(32, 32));
-
-
-	sf::Color rectcol;
-	for (int i = 0; i < mapVector.size(); i++)
+	for (int i = 0; i < loadImage.x; i++)
 	{
-		for (int j = 0; j < mapVector[i].size(); j++)
+		for (int k = 0; k < loadImage.y; k++)
 		{
-			if (mapVector[i][j] == 0)
+			if (map[i][k].x != -1 && map[i][k].y != -1)
 			{
-				rectcol = sf::Color::Green;
+				mapSprite.setPosition(i * 32, k * 32);
+				mapSprite.setTextureRect(sf::IntRect(map[i][k].x * 32, map[i][k].y * 32, 32, 32));
+				window->draw(mapSprite);
 			}
-			else if (mapVector[i][j] == 1)
-			{
-				rectcol = sf::Color::Red;
-			}
-
-
-			rect.setPosition(j * BLOCKSIZE, i * BLOCKSIZE);
-			rect.setFillColor(rectcol);
 		}
 	}
-
-
-}
-
-void Map::Main()
-{
-	LoadMap("Map.txt");
-	while (m_game->m_window.isOpen())
-	{
-		std::cout << " ass";
-		sf::Event Event;
-		while (m_game->m_window.pollEvent(Event))
-		{
-			if (Event.type == sf::Event::Closed || Event.key.code == sf::Keyboard::Escape)
-			{
-				m_game->m_window.close();
-			}
-
-			m_game->m_window.clear();
-			Drawmap(m_game->m_window);
-			m_game->m_window.display();
-		}
-	}
-	//return 1;
 }
 
 

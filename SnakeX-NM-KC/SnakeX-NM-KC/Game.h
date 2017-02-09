@@ -6,8 +6,8 @@ class Game
 {
 public:
 	Game();
-	void Run(const char *filename, sf::RenderWindow &window);
-	void Update(const char *filename, sf::RenderWindow &window);
+	void Run();
+	void Update();
 	void Draw();
 	void initialise();
 

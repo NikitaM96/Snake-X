@@ -40,8 +40,8 @@
 /// <param name=""></param>
 /// <param name="argv"></param>
 /// <returns></returns>
-int main(int, char* argv[] , const char *filename, sf::RenderWindow &window)
+int main(int, char* argv[] )
 {
 	Game game;
-	game.Run(filename, window);
+	game.Run();
 }

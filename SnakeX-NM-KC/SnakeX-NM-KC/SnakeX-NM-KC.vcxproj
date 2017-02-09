@@ -125,7 +125,7 @@
     <ClInclude Include="Map.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\Map.txt" />
+    <Image Include="RESOURCES\tiles.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

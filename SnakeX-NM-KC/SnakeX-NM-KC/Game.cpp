@@ -5,7 +5,7 @@
 
 
 Game::Game()
-	: m_window(sf::VideoMode(1200, 800, 32), "SnakeX", sf::Style::Default)
+	: m_window(sf::VideoMode(640, 900, 32), "SnakeX", sf::Style::Default)
 {
 	m_window.setVerticalSyncEnabled(true);//to match the framerate of both the monitor and the graphics c4rd.
 
@@ -13,42 +13,48 @@ Game::Game()
 
 void Game::initialise()
 {
-
-
-
+	map.LoadMap();
 }
 
-void Game::Run(const char *filename, sf::RenderWindow &window)
+void Game::Run()
 {
 	initialise();
-
-	while (true)
+	while (m_window.isOpen())
 	{
-		
-		Update(filename,window);
+		sf::Event event;
+		Update();
 		Draw();
-		//map.run();
-
+		while (m_window.pollEvent(event))
+		{
+			switch (event.type)
+			{
+			case sf::Event::Closed:
+				m_window.close();
+				break;
+			}
+		}
 	}
 }
 
-void Game::Update(const char *filename, sf::RenderWindow &window)
+void Game::Update()
 {
 	//map.run(filename, m_window);
 
-	map.LoadMap(filename);
+	//map.LoadMap();
+	//map.Draw();
+	
 
-	map.Drawmap(window);
-	map.Main();
+	
+	
 
 }
 
 void Game::Draw()
 {
-	//m_window.clear(sf::Color(360, 360, 360, 360));
-	/*m_window.clear();
-	map.Drawmap(m_window);
-	m_window.display();*/
+	m_window.clear(sf::Color::Blue);
+	
+	map.Draw(&m_window);
 	
 
+	m_window.display();
 }
