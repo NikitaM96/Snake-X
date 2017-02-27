@@ -24,6 +24,9 @@
     <ClCompile Include="Map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -32,9 +35,18 @@
     <ClInclude Include="Map.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="RESOURCES\tiles.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RESOURCES\player.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RESOURCES\player.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

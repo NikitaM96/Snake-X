@@ -4,6 +4,8 @@
 #include <vector>
 
 
+
+
 Game::Game()
 	: m_window(sf::VideoMode(640, 900, 32), "SnakeX", sf::Style::Default)
 {
@@ -14,6 +16,8 @@ Game::Game()
 void Game::initialise()
 {
 	map.LoadMap();
+	m_player.loadPlayer();
+	
 }
 
 void Game::Run()
@@ -43,8 +47,9 @@ void Game::Update()
 	//map.LoadMap();
 	//map.Draw();
 	
-
-	
+	m_player.move();
+	m_player.snakeSelfMovement();
+	map.wallCollition();
 	
 
 }
@@ -55,6 +60,7 @@ void Game::Draw()
 	
 	map.Draw(&m_window);
 	
+	m_player.draw(&m_window);
 
 	m_window.display();
 }

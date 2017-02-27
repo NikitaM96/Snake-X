@@ -17,6 +17,24 @@
 void Map::LoadMap()
 {
 
+
+	//temp files for player
+
+	
+
+	//playerTexture.loadFromFile("./RESOURCES/player.png");
+	//playerSprite.setTexture(playerTexture);
+
+	//if (!playerTexture.loadFromFile("./RESOURCES/player.png"))
+	//{
+	//	std::string s("Error loading texture");
+	//	throw std::exception(s.c_str());
+
+	//}
+
+
+
+
 	std::ifstream openfile("Map.txt");
 	mapTexture.loadFromFile("./RESOURCES/tiles.png");
 	mapSprite.setTexture(mapTexture);
@@ -75,6 +93,8 @@ void Map::LoadMap()
 
 void Map::Draw(RenderWindow *window)
 {
+
+	//for lop to display map
 	for (int i = 0; i < loadImage.x; i++)
 	{
 		for (int k = 0; k < loadImage.y; k++)
@@ -87,21 +107,26 @@ void Map::Draw(RenderWindow *window)
 			}
 		}
 	}
+
+	/*playerSprite.setPosition(5 * 32 , 5 * 32);
+	window->draw(playerSprite);*/
+
 }
 
 
-//void Map::run(const char *filename, sf::RenderWindow &window)
-//{
-//
-//
-//	while (true)
-//	{
-//
-//		LoadMap(filename);
-//		Drawmap(window);
-//		Main();
-//	}
-//
-//
-//}
-
+void Map::wallCollition()
+{
+	for (int i = 0; i < loadImage.x; i++)
+	{
+		for (int k = 0; k < loadImage.y; k++)
+		{
+			if (map[i][k].x != 1 && map[i][k].y != 0)
+			{
+				std::cout << "nope";
+				/*mapSprite.setPosition(i * 32, k * 32);
+				mapSprite.setTextureRect(sf::IntRect(map[i][k].x * 32, map[i][k].y * 32, 32, 32));*/
+				
+			}
+		}
+	}
+}

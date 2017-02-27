@@ -21,7 +21,7 @@ public:
 	std::string mapTileLocation;
 
 	//vector array of for map
-	sf::Vector2i map[100][100];
+	sf::Vector2i map[50][50];
 
 
 	sf::Vector2i loadImage = sf::Vector2i(0, 0);
@@ -33,10 +33,18 @@ public:
 	//to load the map from the file , also to save the value from the file into a temp 
 	//value then pass it to the map vector value one line at a time so the temp vector is empty after each line saved.
 	void LoadMap();
+	void wallCollition();
 
 	void Draw(RenderWindow *window);
 	//void run(const char *filename, sf::RenderWindow &window);
 
+	
 
+
+	//temp files 
+	/*sf::Sprite playerSprite;
+	sf::Texture playerTexture;*/
+
+	
 
 };
