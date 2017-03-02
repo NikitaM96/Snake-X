@@ -1,7 +1,9 @@
-#pragma once
+#ifndef OPTIONS_H
+#define OPTIONS_H
+
+#include <SFML\Graphics.hpp>
 #include <fstream>
 #include <vector>
-#include "Game.h"
 #include <cctype>
 #include <iostream>
 
@@ -16,9 +18,10 @@ public:
 
 	void Run();
 	void Update();
-	void Draw(RenderWindow *window);
+	void Draw(sf::RenderWindow *window);
 	void initialise();
 
 	~Options();
 };
 
+#endif

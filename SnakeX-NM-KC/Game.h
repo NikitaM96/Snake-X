@@ -8,6 +8,17 @@
 #include "Options.h"
 
 
+enum GameState
+{
+	TheLicence,
+	TheSplash,
+	Playing,
+	TheOptions,
+	TheMenu,
+
+};
+
+
 class Game
 {
 public:
@@ -16,6 +27,7 @@ public:
 	void Update();
 	void Draw();
 	void initialise();
+	void ProcessEvents();
 
 	sf::RenderWindow m_window;
 
@@ -23,13 +35,15 @@ public:
 	Map map;
 	player m_player;
 	food m_food;
-	Menu menu;
+	Menu m_menu;
 	Options options;
 
-	enum GameState m_currentState;
+	
+	GameState getGameState();
+	
 
 private:
-
+	GameState m_currentState = GameState::TheLicence;
 	
 
 };

@@ -31,7 +31,7 @@ void Menu::Update()
 	
 }
 
-void Menu::Draw(RenderWindow *window)
+void Menu::Draw(sf::RenderWindow *window)
 {
 	window->draw(m_Background);
 }

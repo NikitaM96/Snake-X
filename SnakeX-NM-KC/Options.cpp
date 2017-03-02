@@ -31,7 +31,7 @@ void Options::Update()
 
 }
 
-void Options::Draw(RenderWindow *window)
+void Options::Draw(sf::RenderWindow *window)
 {
 	window->draw(m_optionBack);
 }

@@ -3,13 +3,13 @@
 #include <iostream>
 #include <vector>
 
-enum  GameState
-{
-	Menu,
-	Options,
-	Game,
-	Loading
-};
+//enum  GameState
+//{
+//	MENU,
+//	OPTIONS,
+//	GAME,
+//	LOADING,
+//};
 
 
 Game::Game()
@@ -17,6 +17,12 @@ Game::Game()
 {
 	m_window.setVerticalSyncEnabled(true);//to match the framerate of both the monitor and the graphics c4rd.
 
+}
+
+void Game::ProcessEvents()
+{
+	/*m_currentState = MENU;
+	menu.Draw();*/
 }
 
 void Game::initialise()
