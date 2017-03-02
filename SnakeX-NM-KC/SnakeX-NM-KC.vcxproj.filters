@@ -36,7 +36,7 @@
     <ClCompile Include="food.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Options.cpp">
+    <ClCompile Include="LoadingScreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,27 +59,18 @@
     <ClInclude Include="food.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Options.h">
+    <ClInclude Include="LoadingScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="RESOURCES\tiles.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RESOURCES\player.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RESOURCES\player.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RESOURCES\food.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RESOURCES\Menu Screen.png">
+    <Image Include="RESOURCES\MEnu.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="RESOURCES\options.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RESOURCES\loading.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

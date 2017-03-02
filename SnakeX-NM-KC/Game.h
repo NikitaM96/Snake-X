@@ -4,20 +4,8 @@
 #include "player.h"
 #include "Controller.h"
 #include "food.h"
-#include "Menu.h"
-#include "Options.h"
-
-
-enum GameState
-{
-	TheLicence,
-	TheSplash,
-	Playing,
-	TheOptions,
-	TheMenu,
-
-};
-
+#include <SFML/Audio.hpp>
+#include "LoadingScreen.h"
 
 class Game
 {
@@ -27,7 +15,6 @@ public:
 	void Update();
 	void Draw();
 	void initialise();
-	void ProcessEvents();
 
 	sf::RenderWindow m_window;
 
@@ -35,15 +22,15 @@ public:
 	Map map;
 	player m_player;
 	food m_food;
-	Menu m_menu;
-	Options options;
-
+	LoadingScreen m_loadingScreen;
 	
-	GameState getGameState();
+	sf::SoundBuffer buffer;
+	sf::Sound sound;
+
 	
 
 private:
-	GameState m_currentState = GameState::TheLicence;
+
 	
 
 };

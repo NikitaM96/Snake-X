@@ -20,7 +20,7 @@ public:
 	sf::Sprite foodSprite;
 	sf::Texture foodTexture;
 
-	void spawn();
+	void spawn(player *m_player);
 	void draw(RenderWindow *window);
 	void changeSpawn(player *m_player);
 	
@@ -28,7 +28,8 @@ public:
 	int positionX = 3;
 	int positionY = 3;
 	
-	
+	sf::Text scoreText;
+	sf::Font scoreFont;
 
 private:
 };

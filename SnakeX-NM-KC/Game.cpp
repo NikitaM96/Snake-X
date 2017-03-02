@@ -3,13 +3,7 @@
 #include <iostream>
 #include <vector>
 
-//enum  GameState
-//{
-//	MENU,
-//	OPTIONS,
-//	GAME,
-//	LOADING,
-//};
+
 
 
 Game::Game()
@@ -17,19 +11,24 @@ Game::Game()
 {
 	m_window.setVerticalSyncEnabled(true);//to match the framerate of both the monitor and the graphics c4rd.
 
-}
-
-void Game::ProcessEvents()
-{
-	/*m_currentState = MENU;
-	menu.Draw();*/
+	
 }
 
 void Game::initialise()
 {
 	map.LoadMap();
 	m_player.loadPlayer();
-	m_food.spawn();
+	m_food.spawn(&m_player);
+	m_loadingScreen.intialise();
+
+	if (!buffer.loadFromFile("./RESOURCES/snake.wav"))
+	{
+		std::cout << "error loading sound";
+	}
+
+
+	sound.setBuffer(buffer);
+	sound.play();
 }
 
 void Game::Run()
@@ -37,6 +36,7 @@ void Game::Run()
 	initialise();
 	while (m_window.isOpen())
 	{
+		
 		sf::Event event;
 		Update();
 		Draw();
@@ -54,6 +54,7 @@ void Game::Run()
 
 void Game::Update()
 {
+	
 	gameController.update();
 	//map.run(filename, m_window);
 
@@ -65,11 +66,6 @@ void Game::Update()
 	
 	m_food.changeSpawn(&m_player);
 	m_player.update(&gameController);
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
-	{
-		GameState Menu;
-	}
 
 }
 
@@ -83,6 +79,7 @@ void Game::Draw()
 
 	m_food.draw(&m_window);
 	
+	m_loadingScreen.Draw(&m_window);
 
 	m_window.display();
 }

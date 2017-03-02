@@ -125,28 +125,25 @@
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="food.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="LoadingScreen.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="Options.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controller.h" />
     <ClInclude Include="food.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="LoadingScreen.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Menu.h" />
-    <ClInclude Include="Options.h" />
     <ClInclude Include="player.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="RESOURCES\food.png" />
-    <Image Include="RESOURCES\Menu Screen.png" />
+    <Image Include="RESOURCES\loading.png" />
+    <Image Include="RESOURCES\MEnu.png" />
     <Image Include="RESOURCES\options.png" />
-    <Image Include="RESOURCES\player.jpg" />
-    <Image Include="RESOURCES\player.png" />
-    <Image Include="RESOURCES\tiles.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
