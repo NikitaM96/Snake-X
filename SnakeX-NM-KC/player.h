@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Game.h"
 #include "Map.h"
-
+#include "Controller.h"
 
 class player
 {
@@ -14,9 +14,10 @@ public:
 	void draw(RenderWindow *window);
 	void loadPlayer();
 	void move();
-
+	void update(Controller* gamePad);
 	void snakeSelfMovement();
 	void snakeWallCollition();
+	void outOfBounds();
 
 	//for direction
 	int x = 5;
@@ -27,7 +28,7 @@ public:
 	int left = 3;
 	int right = 4;
 
-	int m_currentDirection = 0;
+	int m_currentDirection = 2;
 
 private:
 };

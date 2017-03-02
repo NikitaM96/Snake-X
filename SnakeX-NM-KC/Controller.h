@@ -1,7 +1,6 @@
 #ifndef CONTROLLER
 #define CONTROLLER
-#include <SFML/Graphics.hpp>
-#include <iostream>
+
 
 /// <summary>
 /// used to store controller  state

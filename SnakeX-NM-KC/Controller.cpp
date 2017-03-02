@@ -1,5 +1,10 @@
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <vector>
+#include <cctype>
 #include "Controller.h"
-
 
 
 Controller::Controller()

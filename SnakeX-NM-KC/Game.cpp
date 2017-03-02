@@ -17,7 +17,7 @@ void Game::initialise()
 {
 	map.LoadMap();
 	m_player.loadPlayer();
-	
+	m_food.spawn();
 }
 
 void Game::Run()
@@ -42,16 +42,17 @@ void Game::Run()
 
 void Game::Update()
 {
+	gameController.update();
 	//map.run(filename, m_window);
 
 	//map.LoadMap();
 	//map.Draw();
 	
-	m_player.move();
-	m_player.snakeSelfMovement();
-	map.wallCollition();
-	gameController.update();
 	
+	map.wallCollition();
+	
+	m_food.changeSpawn(&m_player);
+	m_player.update(&gameController);
 
 }
 
@@ -62,6 +63,9 @@ void Game::Draw()
 	map.Draw(&m_window);
 	
 	m_player.draw(&m_window);
+
+	m_food.draw(&m_window);
+	
 
 	m_window.display();
 }

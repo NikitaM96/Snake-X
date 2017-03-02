@@ -3,6 +3,7 @@
 #include "Map.h"
 #include "player.h"
 #include "Controller.h"
+#include "food.h"
 
 class Game
 {
@@ -18,7 +19,7 @@ public:
 	Controller gameController;
 	Map map;
 	player m_player;
-	
+	food m_food;
 	
 
 private:

@@ -37,7 +37,7 @@ void player::move()
 {
 
 	
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && m_currentDirection !=4)
 		{
 			m_currentDirection = 3;
 				
@@ -48,7 +48,7 @@ void player::move()
 	
 
 	
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && m_currentDirection != 2)
 		{
 			m_currentDirection = 1;
 			/*y--;
@@ -57,7 +57,7 @@ void player::move()
 	
 
 	
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && m_currentDirection != 1)
 		{
 			m_currentDirection = 2;
 			/*y++;
@@ -66,7 +66,7 @@ void player::move()
 	
 
 	
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && m_currentDirection != 3)
 		{
 			m_currentDirection = 4;
 			/*x++;
@@ -75,35 +75,83 @@ void player::move()
 	
 
 }
+void player::update(Controller *gamePad)
+{
+	if (gamePad->m_currentState.dPadLeft && !gamePad->m_previousState.dPadLeft&& m_currentDirection != 4)
+	{
+		m_currentDirection = 3;
+	}
+	else if (gamePad->m_currentState.dPadRight && !gamePad->m_previousState.dPadRight&& m_currentDirection != 3)
+	{
+		m_currentDirection = 4;
+	}
 
+	if (gamePad->m_currentState.dPadUp && !gamePad->m_previousState.dPadUp&& m_currentDirection != 2)
+	{
+		m_currentDirection = 1;
+	}
+	else if (gamePad->m_currentState.dPadDown && !gamePad->m_previousState.dPadDown && m_currentDirection != 1)
+	{
+		m_currentDirection = 2;
+	}
+
+
+
+	move();
+	snakeSelfMovement();
+	outOfBounds();
+}
 void player::snakeSelfMovement()
 {
 	if (m_currentDirection == 3)//left
 	{
 		x = x - 1;
-		playerSprite.setPosition(x * 10, y * 10);
+		playerSprite.setPosition(x * 3.2, y * 3.2);
 	}
 
 	if (m_currentDirection == 1)//up
 	{
 		y = y - 1;
-		playerSprite.setPosition(x * 10, y * 10);
+		playerSprite.setPosition(x * 3.2, y * 3.2);
 	}
 
 	if (m_currentDirection == 2)//down
 	{
 		y = y + 1;
-		playerSprite.setPosition(x * 10, y * 10);
+		playerSprite.setPosition(x * 3.2, y * 3.2);
 	}
 
 	if (m_currentDirection == 4)//right
 	{
 		x = x + 1;
-		playerSprite.setPosition(x * 10, y * 10);
+		playerSprite.setPosition(x * 3.2, y * 3.2);
 	}
 }
 
 void player::snakeWallCollition()
 {
 	playerSprite.getPosition().x;
+}
+
+void player::outOfBounds() // basic wall hit game over
+{
+	if (playerSprite.getPosition().x > 576)
+	{
+		m_currentDirection = 0;
+	}
+
+	if (playerSprite.getPosition().x < 32)
+	{
+		m_currentDirection = 0;
+	}
+
+	if (playerSprite.getPosition().y > 608)
+	{
+		m_currentDirection = 0;
+	}
+
+	if (playerSprite.getPosition().y < 0)
+	{
+		m_currentDirection = 0;
+	}
 }
