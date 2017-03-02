@@ -3,7 +3,13 @@
 #include <iostream>
 #include <vector>
 
-
+enum  GameState
+{
+	Menu,
+	Options,
+	Game,
+	Loading
+};
 
 
 Game::Game()
@@ -53,6 +59,11 @@ void Game::Update()
 	
 	m_food.changeSpawn(&m_player);
 	m_player.update(&gameController);
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+	{
+		GameState Menu;
+	}
 
 }
 

@@ -36,6 +36,9 @@
     <ClCompile Include="food.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Options.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -56,6 +59,9 @@
     <ClInclude Include="food.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Options.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="RESOURCES\tiles.png">
@@ -67,16 +73,13 @@
     <Image Include="RESOURCES\player.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="RESOURCES\MEnu.png">
+    <Image Include="RESOURCES\food.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RESOURCES\Menu Screen.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="RESOURCES\options.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RESOURCES\food.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RESOURCES\food.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -15,6 +15,7 @@ void player::loadPlayer()
 	playerSprite.setTexture(playerTexture);
 	playerSprite.setPosition(5 * 32, 5 * 32);
 
+	
 	if (!playerTexture.loadFromFile("./RESOURCES/player.png"))
 	{
 		std::string s("Error loading texture");

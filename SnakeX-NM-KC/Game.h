@@ -4,6 +4,9 @@
 #include "player.h"
 #include "Controller.h"
 #include "food.h"
+#include "Menu.h"
+#include "Options.h"
+
 
 class Game
 {
@@ -20,7 +23,10 @@ public:
 	Map map;
 	player m_player;
 	food m_food;
-	
+	Menu menu;
+	Options options;
+
+	enum GameState m_currentState;
 
 private:
 

@@ -1,6 +1,4 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <string>
 #include <fstream>
 #include <vector>
 #include "Game.h"
@@ -8,23 +6,19 @@
 #include <iostream>
 
 
-class Menu
+class Options
 {
 public:
-	Menu();
+	Options();
 
-
-	sf::Texture m_menuBack;
-	sf::Sprite m_Background;
+	sf::Texture m_background;
+	sf::Sprite  m_optionBack;
 
 	void Run();
 	void Update();
 	void Draw(RenderWindow *window);
 	void initialise();
 
-
-
-
-	~Menu();
+	~Options();
 };
 
