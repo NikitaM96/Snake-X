@@ -122,6 +122,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="food.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -132,6 +133,7 @@
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="food.h" />
     <ClInclude Include="Game.h" />
@@ -141,6 +143,7 @@
     <ClInclude Include="player.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="RESOURCES\images.png" />
     <Image Include="RESOURCES\loading.png" />
     <Image Include="RESOURCES\MEnu.png" />
     <Image Include="RESOURCES\options.png" />

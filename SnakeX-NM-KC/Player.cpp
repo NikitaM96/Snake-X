@@ -119,24 +119,44 @@ void player::move()//for testing using the keyboard
 	
 
 }
-void player::update(Controller *gamePad)
+void player::update(Controller *gamePad, button *m_button)
 {
-	if (gamePad->m_currentState.dPadLeft && !gamePad->m_previousState.dPadLeft&& m_currentDirection != 4)
+	if (gamePad->m_currentState.dPadLeft && !gamePad->m_previousState.dPadLeft)// && m_currentDirection != 4
 	{
-		m_currentDirection = 3;
+		
+
+		
+			m_button->currentButton--;
+			
+		
+
 	}
-	else if (gamePad->m_currentState.dPadRight && !gamePad->m_previousState.dPadRight&& m_currentDirection != 3)
+	else if (gamePad->m_currentState.dPadRight && !gamePad->m_previousState.dPadRight)//&& m_currentDirection != 3
+	{
+		
+			m_button->currentButton++;
+		
+	}
+
+	
+	if (gamePad->m_currentState.A && !gamePad->m_previousState.A && m_button->currentButton == 1 && m_currentDirection != 2)
+	{
+		m_currentDirection = 1;
+	}
+
+	if (gamePad->m_currentState.A && !gamePad->m_previousState.A && m_button->currentButton == 2 && m_currentDirection != 1)
+	{
+		m_currentDirection = 2;
+	}
+
+	if (gamePad->m_currentState.A && !gamePad->m_previousState.A && m_button->currentButton == 4 && m_currentDirection != 3)
 	{
 		m_currentDirection = 4;
 	}
 
-	if (gamePad->m_currentState.dPadUp && !gamePad->m_previousState.dPadUp&& m_currentDirection != 2)
+	if (gamePad->m_currentState.A && !gamePad->m_previousState.A && m_button->currentButton == 3 && m_currentDirection != 4)
 	{
-		m_currentDirection = 1;
-	}
-	else if (gamePad->m_currentState.dPadDown && !gamePad->m_previousState.dPadDown && m_currentDirection != 1)
-	{
-		m_currentDirection = 2;
+		m_currentDirection = 3;
 	}
 
 
@@ -146,7 +166,6 @@ void player::update(Controller *gamePad)
 	}
 
 	
-	//playerSprite[1].setPosition((playerSprite[0].getPosition().x * 32) + 32, ((playerSprite[0].getPosition().y) * 3.2));
 	move();
 	snakeSelfMovement();
 	outOfBounds();
@@ -154,10 +173,27 @@ void player::update(Controller *gamePad)
 void player::snakeSelfMovement()
 {
 
-	//for (bodyLength; bodyLength < 10; bodyLength++)
-	//{
+	if (score > 100 && score < 200)
+	{
+		speed = 4;
+	}
 
-	//}
+	if (score > 200 && score < 300)
+	{
+		speed = 6;
+	}
+
+
+	if (score > 300 && score < 400)
+	{
+		speed = 8;
+	}
+
+
+	if (score > 100)
+	{
+		speed = 4;
+	}
 
 	if (m_currentDirection == 3)//left
 	{
@@ -165,56 +201,28 @@ void player::snakeSelfMovement()
 		
 		//moving the head
 		x = x - 1;
-		playerSprite[0].setPosition(x * 3.2, y * 3.2);
+		playerSprite[0].setPosition(x * speed, y * speed);
 
 
-		/*int tempY = y;
-		tempY = tempY - 1;
-		playerSprite[1].setPosition(x * 3.2, tempY * 3.2);*/
-		
-
-
-		/*if (timer > 20)
-		{
-			
-			
-			playerSprite[1].setPosition((playerSprite[0].getPosition().x ), ((playerSprite[0].getPosition().y ) ));
-			
-			timer = 0;
-		}
-*/
-		
-
-
-		/*playerSprite[2].setPosition((playerSprite[1].getPosition().x * 32) + 32, ((playerSprite[0].getPosition().y) * 3.2));
-		playerSprite[3].setPosition((playerSprite[2].getPosition().x * 32) + 32, ((playerSprite[0].getPosition().y) * 3.2));
-		playerSprite[4].setPosition((playerSprite[3].getPosition().x * 32) + 32, ((playerSprite[0].getPosition().y) * 3.2));
-		playerSprite[5].setPosition((playerSprite[4].getPosition().x * 32) + 32, ((playerSprite[0].getPosition().y) * 3.2));
-		playerSprite[6].setPosition((playerSprite[5].getPosition().x * 32) + 32, ((playerSprite[0].getPosition().y) * 3.2));
-		playerSprite[7].setPosition((playerSprite[6].getPosition().x * 32) + 32, ((playerSprite[0].getPosition().y) * 3.2));
-		playerSprite[8].setPosition((playerSprite[7].getPosition().x * 32) + 32, ((playerSprite[0].getPosition().y) * 3.2));
-		playerSprite[9].setPosition((playerSprite[8].getPosition().x * 32) + 32, ((playerSprite[0].getPosition().y) * 3.2));*/
+		 
 	}
 
 	if (m_currentDirection == 1)//up
 	{
 		y = y - 1;
-		playerSprite[0].setPosition(x * 3.2, y * 3.2);
-		//playerSprite[1].setPosition((x * 3.2) , (y * 3.2 + 32));
+		playerSprite[0].setPosition(x * speed, y * speed);
 	}
 
 	if (m_currentDirection == 2)//down
 	{
 		y = y + 1;
-		playerSprite[0].setPosition(x * 3.2, y * 3.2);
-		//playerSprite[1].setPosition((x * 3.2), (y * 3.2 - 32));
+		playerSprite[0].setPosition(x * speed, y * speed);
 	}
 
 	if (m_currentDirection == 4)//right
 	{
 		x = x + 1;
-		playerSprite[0].setPosition(x * 3.2, y * 3.2);
-		//playerSprite[1].setPosition((x * 3.2) - 32, (y * 3.2));
+		playerSprite[0].setPosition(x * speed, y * speed);
 	}
 }
 

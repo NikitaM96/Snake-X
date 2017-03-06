@@ -6,15 +6,33 @@
 #include "food.h"
 #include <SFML/Audio.hpp>
 #include "LoadingScreen.h"
+#include "Button.h"
+#include "Menu.h"
+
+enum GameState
+{
+	TheLicence,
+	TheSplash,
+	Playing,
+	TheOptions,
+	TheMenu,
+	GameOver
+};
+
+
 
 class Game
 {
 public:
 	Game();
 	void Run();
-	void Update();
+	void Update(Controller* gamePad);
 	void Draw();
 	void initialise();
+	void ProcessEvents();
+	GameState getGameState();
+
+	int timer = 0;
 
 	sf::RenderWindow m_window;
 
@@ -23,6 +41,9 @@ public:
 	player m_player;
 	food m_food;
 	LoadingScreen m_loadingScreen;
+	button m_button;
+	Menu m_menu;
+	
 	
 	sf::SoundBuffer buffer;
 	sf::Sound sound;
@@ -31,6 +52,6 @@ public:
 
 private:
 
-	
+	GameState m_currentState = GameState::TheMenu;
 
 };

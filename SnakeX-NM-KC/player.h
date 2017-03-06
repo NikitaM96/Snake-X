@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "Map.h"
 #include "Controller.h"
+#include "button.h"
 
 class player
 {
@@ -21,14 +22,16 @@ public:
 	void draw(RenderWindow *window);
 	void loadPlayer();
 	void move();
-	void update(Controller* gamePad);
+	void update(Controller* gamePad, button* button);
 	void snakeSelfMovement();
 	void snakeWallCollition();
 	void outOfBounds();
 
 	void Score();
 
-	
+	double speed = 3.2;
+
+	int count = 1;
 
 	//for direction
 	int x = 15;
@@ -39,7 +42,7 @@ public:
 	//body moving bool
 	bool nextMove = false;
 
-	int count = 0;
+	//int count = 0;
 
 	//bool for snake body
 	bool bodyAlive = false;
@@ -60,5 +63,8 @@ public:
 	int m_currentDirection = 2;
 
 	int score = 10;
+
+	
+
 private:
 };

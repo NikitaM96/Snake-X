@@ -1,3 +1,4 @@
+
 #pragma once
 #ifndef LOADING
 #define LOADING
@@ -17,17 +18,25 @@ public:
 	sf::Texture loadingTexture;
 	sf::Sprite loadingSprite;
 
+	sf::Font loadingFont;
+	sf::Text loadingText;
 
-
-
+	//for drawing the loading symbol
+	void DrawLoadingSysmbol();
+	bool loadingSysmbol = false;
+	int loadingTimer;
 
 
 	void intialise();
+	void Update();
 	void Draw(RenderWindow *window);
 
 
 
 private:
+
+	RectangleShape loading;
+
 };
 
 
